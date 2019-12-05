@@ -19,7 +19,11 @@ export default class PokemonList extends Component {
                 {this.state.pokemon ? (
                     <div className='row'>
                         {this.state.pokemon.map(pokemon => (
-                            <PokemonCard />
+                            <PokemonCard 
+                                key={pokemon.pokemon.name}
+                                name={pokemon.pokemon.name}
+                                url={pokemon.pokemon.url}
+                            />
                         ))}
                     </div>
                 ) : (<h3>Loading Pokemons...</h3>)}
