@@ -60,6 +60,10 @@ nav{
     background-color: #91ff70 !important; 
 }
 
+.bgGray{
+    background-color: whitesmoke !important; 
+}
+
 .fa-heart{
     font-size: 11.9px;
     color: red;

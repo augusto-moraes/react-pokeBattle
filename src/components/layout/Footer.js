@@ -5,7 +5,7 @@ export default class Footer extends Component {
         return (
             <div>
                 <footer>
-                    <div class="footer-copyright text-center py-3">Developed with the <i class="fas fa-heart"></i> by
+                    <div class="footer-copyright text-center py-3">Developed with the <i class="fas fa-heart"/> by
                         <a href="https://portifolioaugusto.000webhostapp.com" target="_blank"> Augusto Moraes</a>
                     </div>
                 </footer>
