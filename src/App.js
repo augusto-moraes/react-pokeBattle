@@ -8,6 +8,7 @@ import NavBar from "./components/layout/NavBar";
 import Dashboard from './components/layout/Dashboard';
 import Battle from './components/battle/Battle';
 import Tutorial from './components/tutorial/Tutorial';
+import Footer from './components/layout/Footer'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           </Switch>
         </div>
       </div>
+      <Footer />
     </Router>
   );
 }
