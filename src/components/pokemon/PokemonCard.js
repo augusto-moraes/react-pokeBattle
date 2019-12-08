@@ -24,7 +24,7 @@ export default class PokemonCard extends Component {
     state = {
         name: '',
         imageUrl: '',
-        pokeIndex: '',
+        pokemonIndex: '',
         imageLoading: true,
         tooManyRequests: false,
         selected: false
@@ -40,17 +40,42 @@ export default class PokemonCard extends Component {
             imageUrl,
             pokemonIndex,
         });
+    };
+
+    storeIt = () => {
+        this.setState({selected: !this.state.selected})
+        if(!this.state.selected)
+            return localStorage.setItem('backpack', this.state.pokemonIndex);
+        return localStorage.removeItem('backpack');
     }
+
     render() {
+        let card_class = this.state.selected ? (localStorage.getItem('type') == '12' ? "card bgGreen" : (localStorage.getItem('type') == '11' ? "card bgBlue" : "card bgRed")) : "card";
         return (
             <div className='col-md-3 col-sm-6 mb-5'>
-                <Card className='card'>
+                <Card className={card_class} onClick={this.storeIt.bind(this)}>
                     <div className='card-header'>
-                         <img 
-                            src="https://myrealdomain.com/images/pixel-art-flame.png" 
+                        {localStorage.getItem('type') == '12' ? (
+                            <img 
+                            src="http://pixelartmaker.com/art/248a99e0790c2ce.png" 
                             style={{width:'2em', height: '2em' }} 
                             className='rounded d-block' 
-                        />
+                            />
+                        ) : (
+                            localStorage.getItem('type') == '11' ? (
+                                <img 
+                                        src="https://cdn140.picsart.com/254846921001212.png?r1024x1024" 
+                                        style={{width:'2em', height: '2em' }} 
+                                        className='rounded d-block' 
+                                 />
+                            ) : (
+                                <img 
+                                src="https://myrealdomain.com/images/pixel-art-flame.png" 
+                                style={{width:'2em', height: '2em' }} 
+                                className='rounded d-block' 
+                            />
+                            )
+                        )}
                     </div>
                     {this.state.imageLoading ? (
                         <img 

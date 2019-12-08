@@ -7,6 +7,7 @@ import './App.css';
 import NavBar from "./components/layout/NavBar";
 import Dashboard from './components/layout/Dashboard';
 import Battle from './components/battle/Battle';
+import Tutorial from './components/tutorial/Tutorial';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Switch>
             <Route exact path='/' component={Dashboard} />
             <Route exact path='/battle' component={Battle} />
+            <Route exact path='/tutorial' component={Tutorial} />
           </Switch>
         </div>
       </div>

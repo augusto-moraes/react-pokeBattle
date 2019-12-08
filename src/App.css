@@ -1,8 +1,51 @@
 .App{
-    padding-top: 5rem;
+    padding-top: 4rem;
     min-height: 100vh;
 }
 
 .navbar{
     background-color: #ef5350 !important;
+}
+
+.bodyLink{
+    color: #ef5350 !important;
+    text-decoration: none;
+}
+
+.bodyLink:hover{
+    color: #b31815 !important;
+    text-decoration: none;
+}
+
+::selection {
+    background: #e29e9d;
+}
+
+body{
+    -moz-user-select: none;
+    -website-user-select: none;
+    user-select: none;
+    -o-user-select: none;
+}
+.startBattle{
+    text-align: center !important;
+    background-color: #c74543;
+}
+.startBattle:hover{
+    background-color: #b31815;
+}
+nav{
+    padding: 0 !important;
+}
+
+.bgRed{
+    background-color: #ffa970 !important; 
+}
+
+.bgBlue{
+    background-color: #70a9ff !important; 
+}
+
+.bgGreen{
+    background-color: #91ff70 !important; 
 }
