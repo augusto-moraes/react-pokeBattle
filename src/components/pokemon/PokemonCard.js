@@ -28,35 +28,59 @@ export default class PokemonCard extends Component {
         imageLoading: true,
         tooManyRequests: false,
         selected: false,
-        pokeball: [],
+        pokeball: []
     };
 
     componentDidMount(){
         const {name, url} = this.props;
         const pokemonIndex = url.split('/')[url.split('/').length - 2];
         const imageUrl = `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${pokemonIndex}.png?raw=true`;
+        const pokeball = [];
+        
+        if(localStorage.getItem('pokeball')){
+            const pokeball = JSON.parse(localStorage.getItem('pokeball'));
+            if (pokeball.indexOf(pokemonIndex) !== -1) {
+                this.selectIt();
+            }
+        };
 
         this.setState({
             name,
             imageUrl,
             pokemonIndex,
+            pokeball,
         });
+        
+        
     };
 
-    storeIt = () => {
-        if(localStorage.getItem('pokeball')){
-            this.setState({
-                pokeball: localStorage.getItem('pokeball'),
-            });
-        }
+    selectIt = () => {
         this.setState({selected: !this.state.selected});
-        if(!this.state.selected){
-            this.state.pokeball.concat(this.state.pokemonIndex);
-            return localStorage.setItem('pokeball', JSON.stringify(this.state.pokeball));
-        }
+        return;
+    }
 
-        localStorage.removeItem(this.state.pokeball[this.state.nextBall]);
-        this.state.nextBall = this.state.nextBall-1;
+    storeIt = () => {
+        let count = 0;
+        if(localStorage.getItem('pokeball'))
+            count = JSON.parse(localStorage.getItem('pokeball')).length;
+        if(count < 6 ){
+            this.selectIt();
+            if(!this.state.selected){
+                if(localStorage.getItem('pokeball'))
+                    this.state.pokeball = JSON.parse(localStorage.getItem('pokeball'));
+                this.state.pokeball.push(this.state.pokemonIndex);
+                return localStorage.setItem('pokeball', JSON.stringify(this.state.pokeball));
+            }
+        }
+        if(this.state.selected){
+            if(localStorage.getItem('pokeball')){
+                this.selectIt();
+                this.state.pokeball = JSON.parse(localStorage.getItem('pokeball'));
+                this.state.pokeball = this.state.pokeball.filter(i => i !== this.state.pokemonIndex);
+                return localStorage.setItem('pokeball', JSON.stringify(this.state.pokeball));
+            }
+        }
+        return;
     }
 
     render() {
