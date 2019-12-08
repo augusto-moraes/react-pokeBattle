@@ -26,10 +26,10 @@ export default class PokemonList extends Component {
                             <p>If you wanna know how the game works, check our <Link to={`tutorial`} className='bodyLink'>tutorial</Link>.</p>
                         </div>
                         <div className="col">
-                            <div class="btn-group btn-group-sm" role="group">
-                                <button type="submit" class="btn btn-light" onClick={() =>
+                            <div className="btn-group btn-group-sm" role="group">
+                                <button type="submit" className="btn btn-light" onClick={() =>
                                      {
-                                        if(localStorage.getItem('type') != '10'){
+                                        if(localStorage.getItem('type') !== '10'){
                                             localStorage.setItem('type','10');
                                             window.location.reload();
                                         }
@@ -39,9 +39,9 @@ export default class PokemonList extends Component {
                                         style={{width:'2em', height: '2em' }} 
                                         className='rounded d-block' 
                                  /></button>
-                                <button type="submit" class="btn btn-light" onClick={() =>
+                                <button type="submit" className="btn btn-light" onClick={() =>
                                      {
-                                        if(localStorage.getItem('type') != '11'){
+                                        if(localStorage.getItem('type') !== '11'){
                                             localStorage.setItem('type','11');
                                             window.location.reload();
                                         }
@@ -51,9 +51,9 @@ export default class PokemonList extends Component {
                                         style={{width:'2em', height: '2em' }} 
                                         className='rounded d-block' 
                                  /></button>
-                                 <button type="submit" class="btn btn-light" onClick={() => 
+                                 <button type="submit" className="btn btn-light" onClick={() => 
                                     {
-                                        if(localStorage.getItem('type') != '12'){
+                                        if(localStorage.getItem('type') !== '12'){
                                             localStorage.setItem('type','12');
                                             window.location.reload();
                                         }

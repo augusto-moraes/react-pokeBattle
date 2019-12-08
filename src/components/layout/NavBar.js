@@ -5,7 +5,7 @@ export default class NavBar extends Component {
     render() {
         return (
             <div>
-                <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
+                <nav className="navbar navbar-expand-sm navbar-dark fixed-top">
                     <div className="col-md-10 col-sm-9 col-8 mr-0 align-items-center">
                         <Link className="navbar-brand" to={``}>PokeBattle</Link>
                     </div>
