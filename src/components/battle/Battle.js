@@ -25,7 +25,7 @@ export default class Battle extends Component {
                     <h3>Ops, it looks like you didn't chose enough pokemons, go back and select new ones.</h3>
                 ) : (
                     <div>
-                        <h3>Ops, we are still working on this page</h3>
+                        <h3>The Rocket Team has stolen your pokemons!! Come back later...</h3>
                         <div className="row mr-auto">
                             <div className="col-6 mx-auto">
                                 
