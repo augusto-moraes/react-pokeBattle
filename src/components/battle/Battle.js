@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PokemonCard from '../pokemon/PokemonCard';
 import axios from 'axios';
 
 import styled from 'styled-components';
@@ -13,7 +14,16 @@ const Card = styled.div`
 `;
 
 export default class Battle extends Component {
-    
+    state = {
+        pokemon: null
+    };
+
+    async componentDidMount(){
+        const type = localStorage.getItem('type') ? (localStorage.getItem('type')) : ('10');
+        const url = `https://pokeapi.co/api/v2/type/${type}/`
+        const res = await axios.get(url);
+        this.setState({pokemon: res.data['pokemon']})
+    }
 
     render() {
         let count = 0;
@@ -25,9 +35,16 @@ export default class Battle extends Component {
                     <h3>Ops, it looks like you didn't chose enough pokemons, go back and select new ones.</h3>
                 ) : (
                     <div>
+                        <h3>Ops, we are still working on this page</h3>
                         <div className="row mr-auto">
-                            <div className="col-6 mx-auto"></div>
                             <div className="col-6 mx-auto">
+                                <PokemonCard 
+                                    key={localStorage.getItem('pokeball')}
+                                    name={localStorage.getItem('pokeball')}
+                                    url={localStorage.getItem('pokeball')}
+                                />
+                            </div>
+                            <div className="col mx-auto">
                                 <img 
                                 src="https://202297-609260-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2016/08/Team_Rocket.png" 
                                 style={{width:'12em', height: '11em' }} 
