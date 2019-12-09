@@ -14,16 +14,6 @@ const Card = styled.div`
 `;
 
 export default class Battle extends Component {
-    state = {
-        pokemon: null
-    };
-
-    async componentDidMount(){
-        const type = localStorage.getItem('type') ? (localStorage.getItem('type')) : ('10');
-        const url = `https://pokeapi.co/api/v2/type/${type}/`
-        const res = await axios.get(url);
-        this.setState({pokemon: res.data['pokemon']})
-    }
 
     render() {
         let count = 0;
@@ -38,11 +28,7 @@ export default class Battle extends Component {
                         <h3>Ops, we are still working on this page</h3>
                         <div className="row mr-auto">
                             <div className="col-6 mx-auto">
-                                <PokemonCard 
-                                    key={localStorage.getItem('pokeball')}
-                                    name={localStorage.getItem('pokeball')}
-                                    url={localStorage.getItem('pokeball')}
-                                />
+                                
                             </div>
                             <div className="col mx-auto">
                                 <img 
@@ -61,8 +47,14 @@ export default class Battle extends Component {
                             </div>
                             <div className="col mx-auto"></div>
                         </div>
-                        <hr />
-                        
+                        <hr /> 
+                        <div className="row">
+                            {JSON.parse(localStorage.getItem('pokeball')).map(pokemon => (
+                                <div className="col">
+                                    <button className="btn btn-secondary">{pokemon}</button>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 )}
             </div>
